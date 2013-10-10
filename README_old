@@ -1,0 +1,50 @@
+                   memcachefs - memcache filesystem
+
+$Id: README,v 1.11 2007/08/10 17:23:21 hamano Exp $
+
+memcachefs is FUSE based filesystem which mount the memcache server.
+It allows to view cache data of memcached as like regular files.
+
+* Requirement
+
+  - libmemcache 1.4 or later
+  - fuse 2.5 or later
+  - memcached(server side)
+
+* Build
+
+  % ./configure && make
+
+* Usage
+
+** mount the memcahed
+
+   % mkdir mnt
+   % ./memcachefs localhost:11211 ./mnt
+
+** set a cache data
+
+   % echo "value" > ./mnt/key
+
+** get a cache data
+
+   % cat ./mnt/key
+   value
+
+** list keys
+   % ls -l ./mnt
+   total 0
+   -rw-rw-rw- 1 hamano hamano      6 Jan  1  1970 key
+   -rw-rw-rw- 1 hamano hamano      6 Jan  1  1970 key1
+   -rw-rw-rw- 1 hamano hamano      6 Jan  1  1970 key2
+
+** delete a cache data
+   % rm ./mnt/key
+
+** rename cache data
+   % mv ./mnt/key ./mnt/key.bak
+
+** unmount
+   % fusermount -u ./mnt
+
+Copyright (C) 2006 Tsukasa Hamano <code@cuspy.org>

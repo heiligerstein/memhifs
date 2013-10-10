@@ -16,3 +16,9 @@
 *.exe
 *.out
 *.app
+
+# ctags
+tags
+
+# fstest
+./mnt

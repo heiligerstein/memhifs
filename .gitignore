@@ -22,3 +22,9 @@ tags
 
 # fstest
 ./mnt
+
+# post compilation
+Makefile
+config.log
+config.status
+.deps/memcachefs.Tpo
